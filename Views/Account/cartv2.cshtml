@@ -1,0 +1,33 @@
+@model AspNetCore.Demo.ShoppingCartViewModel
+
+<h1>Giỏ hàng</h1>
+
+@if (Model.Products.Count == 0)
+{
+    <p>Giỏ hàng của bạn đang trống.</p>
+}
+else
+{
+    <div class="basket-content">
+        @foreach (var item in Model.Products)
+        {
+            <div class="basket-item">
+                <div class="basket-item-product">
+                    <img src="@item.Product.Image" alt="@item.Product.Name" />
+                    <a href="@Url.Action("Details", "Products", new { id = item.Product.Id })">@item.Product.Name</a>
+                </div>
+                <div class="basket-item-details">
+                    <span class="basket-item-quantity">Số lượng: @item.Quantity</span>
+                    <span class="basket-item-price">Giá: @item.Product.Price:c</span>
+                </div>
+            </div>
+        }
+
+        <div class="basket-totals">
+            <span class="basket-total-label">Tổng cộng:</span>
+            <span class="basket-total-price">@Model.Total:c</span>
+        </div>
+
+        <a href="@Url.Action("Checkout", "Checkout")" class="btn btn-primary">Thanh toán</a>
+    </div>
+}
