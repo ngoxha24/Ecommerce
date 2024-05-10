@@ -58,7 +58,7 @@ namespace Ecommerce.Models
         [Display(Name = "Password")]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(Name = "Forgotten password?")]
         public bool RememberMe { get; set; }
     }
 
