@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Gentium+Plus:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@100..900&display=swap');
+
+* {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-variation-settings: "slnt" 0;
+}
+
+.loginPage {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.content {
+    background: white;
+    background-image: url("background-login.jpg");
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
+.login {
+    margin-top: 3rem;
+    background-color: transparent;
+    border-radius: 10px;
+    backdrop-filter: blur(50px);
+    border: 5px solid #f5f5f5;
+}
