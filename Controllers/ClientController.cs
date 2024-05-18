@@ -39,5 +39,17 @@ namespace Ecommerce.Controllers
         {
             return View();
         }
+        [Route("myshop/ordertracking")]
+        public ActionResult orderTracking(int status)
+        {
+            ViewBag.Status = status;
+            return View();
+        }
+        [Route("order")]
+        public ActionResult Order(int orderType)
+        {
+            ViewBag.OrderType = orderType;
+            return View();
+        }
     }
 }
