@@ -29,5 +29,10 @@ namespace Ecommerce.Controllers
         {
             return View();
         }
+        [Route("myshop/itemlist")]
+        public ActionResult itemList()
+        {
+            return View();
+        }
     }
 }
