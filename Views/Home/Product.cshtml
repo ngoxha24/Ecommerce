@@ -1,20 +1,84 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Product";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="row">
-    <section class="col-md-4" aria-labelledby="productTitle">
-        <h2 id="productTitle">Áo thun</h2>
-        <p>
-            Áo thun mùa hè thoáng mát, giúp tránh mồ hôi và thoải mái vận động
-        </p>
-        <p>
-            Giá: 200000
-        </p>
-        <p><a class="btn btn-outline-dark" href="#">Mua &raquo;</a></p>
-    </section>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+    }
+
+    h2 {
+        color: #343a40;
+    }
+
+    .image {
+        text-align: center;
+        width: 500px;
+        height: 400px;
+        background-color: darkgray;
+    }
+
+    .btn-outline-dark {
+        color: #343a40;
+        border-color: #343a40;
+    }
+
+        .btn-outline-dark:hover {
+            color: #fff;
+            background-color: #343a40;
+            border-color: #343a40;
+        }
+
+    .container-product {
+        display: flex;
+        justify-content: space-between;
+        align-items: center; /* Căn giữa theo chiều dọc */
+    }
+
+    .row {
+        flex: 1;
+    }
+
+    .ads {
+        flex: 0 0 300px; /* Độ rộng cố định cho .ads */
+        margin-left: 20px;
+        background-color: #e9ecef; /* Màu nền để dễ thấy */
+        padding: 10px;
+        
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Hiệu ứng đổ bóng */
+    }
+</style>
+
+<div class="container-product">
+    <div class="row">
+        <section class="col-md-4" aria-labelledby="productTitle">
+            <h2 id="productTitle">Áo thun</h2>
+            <div class="image">Nơi hiển thị ảnh</div>
+            <p>Giá: 200.000</p>
+            <p><a class="btn btn-outline-dark" href="#">Mua &raquo;</a></p>
+            <p>Thông tin chi tiết:</p>
+            <p>Áo thun mùa hè thoáng mát, giúp tránh mồ hôi và thoải mái vận động</p>
+        </section>
+    </div>
+
+    <div class="ads">
+        <section>
+            <h2 id="productTitle">Áo thun</h2>
+            <p>Giá: 200.000</p>
+        </section>
+        <section>
+            <h2 id="productTitle">Áo thun</h2>
+            <p>Giá: 200.000</p>
+        </section>
+        <section>
+            <h2 id="productTitle">Áo thun</h2>
+            <p>Giá: 200.000</p>
+        </section>
+        <section>
+            <h2 id="productTitle">Áo thun</h2>
+            <p>Giá: 200.000</p>
+        </section>
+    </div>
 </div>
-
-
