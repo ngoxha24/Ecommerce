@@ -209,6 +209,9 @@
     <Content Include="App_Data\Ecommerce_log.ldf">
       <DependentUpon>Ecommerce.mdf</DependentUpon>
     </Content>
+    <Content Include="Assets\angular.min.js" />
+    <Content Include="Assets\shopController.js" />
+    <Content Include="Assets\shopService.js" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
