@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,5 +17,14 @@ namespace Ecommerce.Controllers
         {
             return View();
         }
+        // POST: cart
+        [Authorize]
+        [Route("cart")]
+        [HttpPost]
+        public ActionResult Cart(FormCollection form)
+        {
+            return View();
+        }
+        
     }
 }
