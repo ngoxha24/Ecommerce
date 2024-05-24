@@ -214,6 +214,8 @@
     <Content Include="Assets\cartService.js" />
     <Content Include="Assets\itemController.js" />
     <Content Include="Assets\itemService.js" />
+    <Content Include="Assets\orderController.js" />
+    <Content Include="Assets\orderService.js" />
     <Content Include="Assets\shopController.js" />
     <Content Include="Assets\shopService.js" />
     <Content Include="Content\bootstrap-grid.css" />
