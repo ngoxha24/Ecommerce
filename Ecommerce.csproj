@@ -215,8 +215,12 @@
     <Content Include="Assets\angular.min.js" />
     <Content Include="Assets\cartController.js" />
     <Content Include="Assets\cartService.js" />
+    <Content Include="Assets\clientController.js" />
+    <Content Include="Assets\clientService.js" />
     <Content Include="Assets\itemController.js" />
     <Content Include="Assets\itemService.js" />
+    <Content Include="Assets\manage1Controller.js" />
+    <Content Include="Assets\manageService.js" />
     <Content Include="Assets\orderController.js" />
     <Content Include="Assets\orderService.js" />
     <Content Include="Assets\shopController.js" />
