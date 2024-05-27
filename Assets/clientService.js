@@ -9,14 +9,7 @@ app.service("clientService", function ($http) {
         });
         return res;
     }
-    this.getDiscountList = function () {
-        let res = $http({
-            method: 'get',
-            url: 'item/discount',
-            params: {},
-        });
-        return res;
-    }
+
     this.getItemList = function () {
         let res = $http({
             method: 'get',
