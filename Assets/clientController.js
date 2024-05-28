@@ -14,3 +14,29 @@ app.controller("homeController", function ($scope, clientService) {
     })
     
 })
+
+app.controller("infoController", function ($scope, infoService) {
+    infoService.getUser().then(function (res) {
+        $scope.User = res.data;
+        console.log($scope.User)
+        $scope.User.DOB = $scope.formatDOB($scope.User.DOB);
+    })
+
+
+    $scope.updateUser = function () {
+        console.log($scope.User);
+        infoService.updateUser($scope.User).then(function (res) {
+            console.log(res.data);
+            infoService.getUser().then(function (res) {
+                $scope.User = res.data;
+
+            })
+        })
+    }
+    $scope.formatDOB = function (dob) {
+        return dob.split("T")[0];
+    }
+})
+app.controller("itemController", function ($scope, itemService) {
+
+})
