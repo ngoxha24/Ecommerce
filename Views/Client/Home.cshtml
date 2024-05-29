@@ -1,0 +1,171 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+
+}
+<head>
+    <script src="~/Assets/clientService.js"></script>
+    <script src="~/Assets/clientController.js"></script>
+    <link href="~/Style/clientPage.css" type="text/css" rel="stylesheet" />
+
+</head>
+<body ng-app="myApp" ng-controller="homeController">
+    <div class="col-12" style="display: flex; justify-content: center; background: #f5f5f5 ">
+        <div class="card_wrapper col-10 banner">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="head_text">Thông tin về trang web</h2>
+                    <div class="owl-carousel card_carousel">
+                        <div class="card_box">
+                            <div class="text_box">
+                                <img src="https://t3.ftcdn.net/jpg/04/65/46/52/360_F_465465254_1pN9MGrA831idD6zIBL7q8rnZZpUCQTy.jpg" height="420" />
+                            </div>
+                            <ul class="card_social">
+                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fab fa-google"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="card_box">
+                            <div class="text_box">
+                                <img src="https://as2.ftcdn.net/v2/jpg/02/49/50/15/1000_F_249501541_XmWdfAfUbWAvGxBwAM0ba2aYT36ntlpH.jpg" height="420" />
+                            </div>
+                            <ul class="card_social">
+                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fab fa-google"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="card_box">
+                            <div class="text_box">
+                                <img src="https://as1.ftcdn.net/v2/jpg/05/09/38/38/1000_F_509383895_dcklhRhJ1vdVct0L4oor45mlgUTWV6Qm.jpg" height="420" />
+                            </div>
+                            <ul class="card_social">
+                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fab fa-google"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="card_box">
+                            <div class="text_box">
+                                <img src="https://as1.ftcdn.net/v2/jpg/04/77/72/24/1000_F_477722477_irzw4PgDsXs7txrM9PThsw6hvRaJPY5d.jpg" height="420" />
+                            </div>
+                            <ul class="card_social">
+                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fab fa-google"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="card_box">
+                            <div class="text_box">
+                                <img src="https://as1.ftcdn.net/v2/jpg/03/65/52/86/1000_F_365528663_miV08QzGGVLqhRRQVQ4B9C9PtoTRJiSv.jpg" height="420" />
+                            </div>
+                            <ul class="card_social">
+                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fab fa-google"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="card_box">
+                            <div class="text_box">
+                                <img src="https://as1.ftcdn.net/v2/jpg/05/09/38/38/1000_F_509383895_dcklhRhJ1vdVct0L4oor45mlgUTWV6Qm.jpg" height="420" />
+                            </div>
+                            <ul class="card_social">
+                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fab fa-google"></i></a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="itemType col-10">
+            <h2 id="title1">Danh mục</h2>
+            <div ng-repeat="type in listOfType">
+                <button>
+                    <img src="{{type.ImageUrl}}" width="100" />
+                    <h2>{{type.TypeName}}</h2>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="background: none">
+        <div class="flashsale col-10">
+            <h2 id="saleTitle">FLASH SALE</h2>
+            <div class="sale col-12">
+                <div ng-repeat="item in discountList" class="salechildren">
+                    <a href="/product?id={{item.ItemId}}"><img src="{{item.ImageUrl}}" /></a>
+                    <h2>{{item.DiscountPrice}}.000vnđ</h2>
+                    <progress id="file" value="{{item.QuantityDiscount}}" max="100"> 32% </progress>
+                </div>
+            </div>
+            <a style="color: red; width: 100%; text-align: center; display: block; margin-top: 2rem; background: white" href="#">>>Xem thêm<<</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="itemList col-10">
+            <h2>Gian hàng gợi ý</h2>
+            <div class="list col-12">
+                <a ng-repeat="item in itemList" class="itemchildren" href="product?id={{item.Id}}">
+                    <img src="{{item.ItemImageUrl}}" />
+                    <h3>{{item.ItemName}}</h3>
+                    <div class="price">
+                        <h4>{{item.Price}}.000đ</h4>
+                        <h5>Đã bán {{item.TotalOrder}}</h5>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+</body>
+
+<!-- card area end -->
+<!-- all js here -->
+<script src="~/Content/jquery-3.4.1.min.js"></script>
+<script src="~/Content/bootstrap.min.js"></script>
+<script src="~/Content/owl.carousel.min.js"></script>
+<script>
+
+    //card slider start
+    function card_carouselInit() {
+        $('.owl-carousel.card_carousel').owlCarousel({
+            dots: true,
+            loop: true,
+            margin: 20,
+            stagePadding: 2,
+            autoplay: true,
+            autoplayTimeout: 1500,
+            nav: true,
+            navText: ["<i class='far fa-arrow-alt-circle-left'></i>", "<i class='far fa-arrow-alt-circle-right'></i>"],
+            autoplayHoverPause: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                768: {
+                    items: 2,
+                },
+                992: {
+                    items: 1
+                }
+            }
+        });
+    }
+    card_carouselInit();
+
+</script>
+
+
+

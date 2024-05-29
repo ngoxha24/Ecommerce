@@ -241,7 +241,7 @@ namespace Ecommerce.Controllers
                 return RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordSuccess });
             }
             AddErrors(result);
-            return View(model);
+            return RedirectToAction("Info","Client");
         }
 
         //

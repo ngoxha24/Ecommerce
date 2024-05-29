@@ -58,7 +58,7 @@ namespace Ecommerce.Models
         [Display(Name = "Password")]
         public string Password { get; set; }
 
-        [Display(Name = "Forgotten password?")]
+        [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
     }
 
@@ -77,7 +77,7 @@ namespace Ecommerce.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Compare("Password", ErrorMessage = "Mật khẩu và xác nhận mật khẩu không trùng khớp")]
         public string ConfirmPassword { get; set; }
     }
 
