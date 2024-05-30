@@ -24,4 +24,29 @@ app.service("clientService", function ($http) {
         });
         return res;
     }
+    
 });
+
+app.service("infoService", function ($http) {
+    this.getUser = function () {
+        var response = $http({
+            method: 'get',
+            url: "info/getuser"
+        });
+        return response;
+    }
+    this.updateUser = function (user) {
+        var response = $http({
+            method: 'post',
+            url: "info/updateuser",
+            data: user,
+            dataType: "json",
+        });
+        return response;
+        
+    }
+})
+
+app.service("ItemService", function ($http) {
+
+})

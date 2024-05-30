@@ -15,18 +15,17 @@ namespace Ecommerce.Models
     public partial class Item
     {
         public int Id { get; set; }
-        public Nullable<int> SellerId { get; set; }
+        public string SellerId { get; set; }
         public string SellerName { get; set; }
         public string ItemName { get; set; }
+        public Nullable<int> ItemTypeId { get; set; }
         public string ItemType { get; set; }
         public string ItemDescription { get; set; }
         public string ItemImageUrl { get; set; }
-        public string Url { get; set; }
         public string ItemFooterDescription { get; set; }
         public Nullable<int> Price { get; set; }
-        public Nullable<int> DiscountPrice { get; set; }
-        public Nullable<int> Quantity { get; set; }
         public Nullable<int> TotalOrder { get; set; }
+        public Nullable<int> TotalRating { get; set; }
         public Nullable<System.DateTime> CreatedTime { get; set; }
         public Nullable<System.DateTime> ModifiedTime { get; set; }
         public Nullable<bool> IsApproved { get; set; }

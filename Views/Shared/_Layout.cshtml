@@ -3,36 +3,89 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Thương mại điện tử</title>
+    <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <script src="~/Assets/angular.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <link href="~/Style/layoutStyle.css" rel="stylesheet" type="text/css" />
+    <link href="~/Style/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Style/fontawesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Style/owl.carousel.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Style/style.css" rel="stylesheet" type="text/css" />
+    <script src="https://kit.fontawesome.com/3e5b7bb638.js" crossorigin="anonymous"></script>
+    <link href="~/Style/font-awesome.min.css" rel="stylesheet"/>
 
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
-        <div class="container">
-            @Html.ActionLink("Trang Chủ", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                </ul>
-                 @Html.Partial("_LoginPartial")
+    <div class="row" style="background: #fd5959; ">
+        <nav class="navigation">
+            <div style="width: 50%; display: flex; justify-content: flex-start">
+                <button><a href="~/home" style="margin-top: 0rem"><img src="~/logo.png" height="50px" /><span style="color: white; margin-left: 0.5rem">Ecommerce</span></a></button>
+                <button><a href="~/home">Trang chủ</a></button>
+                <button><a href="home">Thông tin về trang web</a></button>
+                <button><a href="home">Liên hệ</a></button>
             </div>
+            <div style="width: 50%">
+                @Html.Partial("_LoginPartial")
+            </div>
+            
+        </nav>
+        <div class="col-8 search">
+            <div class="col-12">
+                <input placeholder="Bắt đầu tìm kiếm với từ khóa..." class="col-12"/>
+                <button id="search"><ion-icon name="search-outline"></ion-icon></button>
+            </div>
+            <div class="word-list col-12">
+                    <button value="Dụng cụ">Dụng cụ</button>
+                    <button value="Quần áo">Quần áo</button>
+                    <button value="Thiết bị điện tử">Thiết bị điện tử</button>
+                    <button value="Điện thoại">Điện thoại</button>
+                    <button value="Bàn phím & chuột">Bàn phím & chuột</button>
+                    <button value="Chăm sóc sức khỏe">Chăm sóc sức khỏe</button>
+                    <button value="Mỹ phẩm">Mỹ phẩm</button>
+                    <button value="Đồ ăn">Đồ ăn</button>
+                   
+            </div>
+        
         </div>
-    </nav>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Trang thương mại điện tử hàng đầu</p>
+        
+    </div>
+    
+    <div class="row">
+        <div class="content col-12">
+            @RenderBody()
+        </div>
+
+    </div>
+    <div class="row" style="background: #f5f5f5; border-top: 3px solid red; margin-top: 3rem">
+        <footer class="col-10 footer">
+            <div class="col-4">
+                <h2>Website bán hàng trực tuyến</h2>
+                <h2>Thuộc Nhóm ABC XYZ ASDF</h2>
+                <h2>
+                    Số giấy phép: 548/GP-BTTTT ngày
+                    <br>24/08/2021
+                </h2>
+            </div>
+            <div class="col-4">
+                <p>
+                    Chủ quản lý: EcommerceVN
+                    <br>
+                    Địa chỉ: Tầng 10, Tòa A FPT Tower, số 10 Phạm Văn Bạch,
+                    <br>Dịch Vọng, Cầu Giấy, Hà Nội<br>
+                    Điện thoại: 024 7300 8899 - máy lẻ 4500
+
+                </p>
+            </div>
+            <div class="col-4">
+                <h2>© 2021-2024. Toàn bộ bản quyền thuộc về ABC.XYZ</h2>
+            </div>
+
         </footer>
     </div>
+    
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

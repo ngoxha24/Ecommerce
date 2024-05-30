@@ -19,9 +19,9 @@ namespace Ecommerce.Controllers
         {
             return View();
         }
-        [Route("shopping")]
-        public ActionResult Shopping()
-        {
+        [Route("item")]
+        public ActionResult Product(string Keyword) {
+            ViewBag.Keyword = Keyword;
             return View();
         }
         [Route("my-shop")]
