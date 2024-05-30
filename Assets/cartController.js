@@ -25,6 +25,25 @@ app.controller("cartController", function ($scope, cartService) {
         $scope.total = cartService.getTotal();
         $scope.totalItem = cartService.getTotalItem();
     }
+    $scope.addCart = function (item) {
+        cartService.addCart(item);
+        $scope.cart = cartService.getCart();
+        $scope.total = cartService.getTotal();
+        $scope.totalItem = cartService.getTotalItem();
+    }
+    $scope.updateCart = function (item) {
+        cartService.updateCart(item);
+        $scope.cart = cartService.getCart();
+        $scope.total = cartService.getTotal();
+        $scope.totalItem = cartService.getTotalItem();
+    }
+    $scope.deleteCart = function (item) {
+        cartService.deleteCart(item);
+        $scope.cart = cartService.getCart();
+        $scope.total = cartService.getTotal();
+        $scope.totalItem = cartService.getTotalItem();
+    }
+    
 }
 )
 // Path: Assets/clientController.js
