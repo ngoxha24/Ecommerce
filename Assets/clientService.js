@@ -43,7 +43,38 @@ app.service("infoService", function ($http) {
             dataType: "json",
         });
         return response;
-        
+
+    }
+    this.getShop = function () {
+        var response = $http({
+            method: 'get',
+            url: 'info/getshop'
+        });
+        return response;
+    }
+    this.registerShop = function (address, phonenumber, description, detail, infourl) {
+        var response = $http({
+            method: 'post',
+            url: 'info/registershop',
+            params: {
+                Address: address,
+                PhoneNumber: phonenumber,
+                Description: description,
+                Detail: detail,
+                InfoUrl: infourl,
+            }
+
+        });
+        return response;
+    }
+    this.deleteRegister = function (shop) {
+        var response = $http({
+            method: 'post',
+            url: 'info/deleteregister',
+            data: shop,
+            dataType: 'json',
+        });
+        return response;
     }
 })
 
