@@ -16,5 +16,14 @@ namespace Ecommerce.Controllers
         {
             return View();
         }
+        // POST: cart
+        [Authorize]
+        [Route("cart")]
+        [HttpPost]
+        public ActionResult Cart(FormCollection form)
+        {
+            return View();
+        }
+        
     }
 }
