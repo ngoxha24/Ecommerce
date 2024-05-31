@@ -40,5 +40,16 @@ app.controller("infoController", function ($scope, infoService) {
     }
 })
 app.controller("itemController", function ($scope, itemService) {
+    let keyword = document.getElementById("data").getAttribute('data-title');
+    console.log(keyword)
+    //Initalize
+    itemService.getItemType().then(function (res) {
+        $scope.itemTypes = res.data;
+    })
+    itemService.getByKeyword(keyword).then(function (res) {
+        $scope.itemList = res.data;
+        console.log(res.data);
+    })
+
 
 })
