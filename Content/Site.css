@@ -12,4 +12,151 @@
     white-space: normal;
 }
 
+/* Css của khách hàng (Giới) */
+.order_g {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.title_g {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+}
+.info_g {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.info_g span {
+    font-weight: bold;
+}
+.info_g span:first-child {
+    margin-right: 10px;
+}
+.info_g span:last-child {
+    color: #f00;
+}
+.info_g a {
+    color: #f00;
+}
+.info_g a:hover {
+    text-decoration: none;
+    color: #f00;
+}
+.info_g p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.info_g p:last-child {
+    margin-bottom: 0;
+}
+.info_g img {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    max-width: 100%;
+    height: auto;
+}
+.info_g .btn {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.info_g .btn a {
+    color: #fff;
+}
+.info_g .btn a:hover {
+    color: #fff;
+}
+.info_g .btn a:active {
+    color: #fff;
+}
+.info_g .btn a:focus {
+    color: #fff;
+}
+.info_g .btn a:visited {
+    color: #fff;
+}
+.info_g .btn a:link {
+    color: #fff;
+}
+.info_g .btn a {
+    text-decoration: none;
+}
+.info_g .btn a:hover {
+    text-decoration: none;
+}
+.info_g .btn a:active {
+    text-decoration: none;
+}
+.info_g .btn a:focus {
+    text-decoration: none;
+}
+.info_g .btn a:visited {
+    text-decoration: none;
+}
+.info_g .btn a:link {
+    text-decoration: none;
+}
+.info_g .btn a {
+    background-color: #f00;
+    border: 1px solid #f00;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+.info_g .btn a:hover {
+    background-color: #f00;
+    border: 1px solid #f00;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+.info_g .btn a:active {
+    background-color: #f00;
+    border: 1px solid #f00;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+.info_g .btn a:focus {
+    background-color: #f00;
+    border: 1px solid #f00;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+.info_g .btn a:visited {
+    background-color: #f00;
+    border: 1px solid #f00;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+.info_g .btn a:link {
+    background-color: #f00;
+    border: 1px solid #f00;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+#btn_g {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#btn_g a {
+    color: #fff;
+}
+#btn_g a:hover {
+    color: #fff;
+}
+#btn_g a:active {
+    color: #fff;
+}
+#btn_g a:focus {
+    color: #fff;
+}
+#btn_g a:visited {
+    color: #fff;
+}
+#btn_g a:link {
+    color: #fff;
+}
+#btn_g a {
+    text-decoration: none;
+}
 
