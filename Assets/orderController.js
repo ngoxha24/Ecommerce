@@ -42,9 +42,8 @@ app.controller("orderControler", function ($scope, orderService) {
         $scope.order = orderService.getOrder();
         $scope.total = orderService.getTotal();
         $scope.totalItem = orderService.getTotalItem();
-    }
     
-    
+    }   
     
 }
 )

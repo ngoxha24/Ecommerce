@@ -32,4 +32,5 @@ namespace Ecommerce.Models
         public Nullable<int> Status { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
     }
+    
 }
