@@ -40,3 +40,94 @@
     font-weight: 300;
     font-size: 1.1rem;
 }
+
+#loginForm a {
+    color: blue;
+}
+
+#loginForm p {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+#loginForm button {
+    --color: #fd5959;
+    display: block;
+    width: 8em;
+    height: 2.6em;
+    line-height: 2.5em;
+    margin: 1rem auto;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid var(--color);
+    transition: color .5s;
+    z-index: 1;
+    font-size: 17px;
+    border-radius: 6px;
+    font-weight: 500;
+    color: var(--color);
+}
+
+    #loginForm button:before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        background: var(--color);
+        height: 150px;
+        width: 200px;
+        border-radius: 50%;
+    }
+
+    #loginForm button:hover {
+        color: #fff;
+    }
+
+    #loginForm button:before {
+        top: 100%;
+        left: 100%;
+        transition: all .7s;
+    }
+
+    #loginForm button:hover:before {
+        top: -30px;
+        left: -30px;
+    }
+
+    #loginForm button:active:before {
+        background: #3a0ca3;
+        transition: background 0s;
+    }
+
+#login-child input {
+    width: 100%;
+    border-radius: 10px;
+    padding: 1.5rem 10px 5px 10px;
+    z-index: 2;
+    position: relative;
+    margin: 0.5rem 0;
+}
+
+    #login-child input:focus {
+        border: 3px inset black;
+    }
+
+#login-child {
+    position: relative;
+}
+
+    #login-child h2 {
+        position: absolute;
+        font-size: 1rem;
+        top: 1rem;
+        left: 0;
+        transition: font-size .5s ease, top .5s ease;
+        z-index: 2;
+        user-select: none;
+    }
+
+    #login-child input:focus ~ h2,
+    #login-child input:valid ~ h2 {
+        font-size: 0.8rem;
+        top: 0.1rem;
+    }
