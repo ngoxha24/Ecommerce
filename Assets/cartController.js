@@ -42,8 +42,9 @@ app.controller("cartController", function ($scope, cartService) {
         $scope.cart = cartService.getCart();
         $scope.total = cartService.getTotal();
         $scope.totalItem = cartService.getTotalItem();
-    }
     
+    }
+
 }
 )
 // Path: Assets/clientController.js

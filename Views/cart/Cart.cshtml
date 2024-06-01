@@ -2,6 +2,50 @@
 @{
     ViewBag.Title = "Giỏ hàng";
 }
-
-
-
+<!-- Cart view -->
+<h1>Giỏ hàng</h1>
+<!-- If the cart is empty -->
+@if (Model.Products.Count == 0)
+{
+    <!-- Display a message -->
+    <!-- icon -->
+    <i class="fas fa-shopping-cart"></i>
+    <!-- message -->
+    <p>Giỏ hàng của bạn đang trống!</p>
+    <a href="@Url.Action("Index", "Home")" class="btn btn-outline-dark">Tiếp tục mua hàng</a>
+}
+<!-- If the cart is not empty -->
+else
+{
+    <div class="basket-content">
+        <!-- Loop through each product in the cart -->
+        @foreach (var item in Model.Products)
+        {
+            <div class="basket-item">
+                <div class="basket-item-product">
+                    <img src="@item.Product.Image" alt="@item.Product.Name" />
+                </div>
+                <div class="basket-item-details">
+                    <span class="basket-item-quantity">Số lượng: @item.Quantity</span>
+                    <span class="basket-item-price">Giá: @item.Product.Price:c</span>
+                </div>
+                <div class="row">
+                    <div class="offset-md-2 col-md-10">
+                        <input type="" class="btn btn-outline-dark" value="" />
+                    </div>
+                </div>
+            </div>
+        }
+        <!-- Display the total price of the cart -->
+        <div class="basket-totals">
+            <span class="basket-total-label">Tổng cộng:</span>
+            <span class="basket-total-price">@Model.Total:c</span>
+        </div>
+        <!-- Checkout button -->
+        <a href="@Url.Action("Checkout", "Checkout")" class="btn btn-primary">Thanh toán</a>
+    </div>
+    <!-- Continue shopping button -->
+    <div class="basket-footer">
+        <a href="@Url.Action("Index", "Home")" class="btn btn-outline-dark">Tiếp tục mua hàng</a>
+    </div>
+}
