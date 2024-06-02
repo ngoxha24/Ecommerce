@@ -2,7 +2,7 @@
 @{ 
     ViewBag.Title = ViewBag.ProductName;
 }
-<!-- <head>
+<head>
     <script src="~/Assets/itemService.js"></script>
     <script src="~/Assets/itemController.js"></script>
     <link href="~/Style/ItemPage.css" rel="stylesheet" type="text/css" />
@@ -103,106 +103,9 @@
                 <h2>Số người theo dõi <span>1</span></h2>
             </div>
         </div>
-    </div> -->
+    </div>
     
 
-    <!-- //product info -->
-    <div class="row">
-        <div class="col-10 product">
-            <div class="col-5" id="image-product">
-                <img src="{{Categories[currentCate].ImageUrl}}" />
-                <div class="share">
-                    <h2>
-                        Chia sẻ:      <i class="fa-brands fa-facebook-f" style="color: lightblue"></i>
-                        <i class="fa-brands fa-instagram" style="color: orange"></i>
-                        <i class="fa-brands fa-facebook-messenger" style="color: blueviolet"></i>
-                        <i class="fa-brands fa-twitter" style="color: lightskyblue"></i>
-                    </h2>
-                </div>
-            </div>
-            <div class="product-info col-7">
-                <h2 id="product-title">{{Item.ItemName}}</h2>
-                <ul>
-                    <li>
-                        4.9
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                    </li>
-                    <li>2000 đánh giá</li>
-                    <li>{{Item.TotalOrder}} đã bán</li>
-                </ul>
-                <div class="nav-option">
-                    <button>Giá cả và đặt hàng</button>
-                    <button>Chi tiết sản phẩm</button>
-                    <button>Mô tả sản phẩm</button>
-                </div>
-                <div id="description">
-                    <h2 id="price" ng-if="Categories[currentCate].QuantityDiscount == 0">
-                        {{Categories[currentCate].Price}}.000vnđ
-                    </h2>
-                    <h2 id="price" ng-if="Categories[currentCate].QuantityDiscount > 0">
-                        <span id="remove" style="color: black; font-size: 1rem">{{Categories[currentCate].Price}}.000vnđ</span>
-                        <span>{{Categories[currentCate].DiscountPrice}}.000vnđ</span>
-                    </h2>
-                    <h2>Voucher</h2>
-                    <h2>Trống</h2>
-                    <h2>Chính sách trả hàng</h2>
-                    <h2>Trả hàng sau 15 ngày</h2>
-                    <h2>Phân loại</h2>
-                    <div id="category1">
-                        <button ng-repeat="cate in Categories" ng-click="onChange($index)">{{cate.CateId}}</button>
-                    </div>
-                    <h2>Số lượng</h2>
-                    <div>
-                        <input type="number" min="1" />
-                        <span style="font-size:0.9rem; font-weight: 500">
-                            {{Categories[currentCate].Quantity}} sản phẩm có sẵn
-                        </span>
-                    </div>
-                </div>
-                <div class="pay">
-                    <button><ion-icon name="cart-outline"></ion-icon>Thêm vào giỏ hàng</button>
-                    <button id="buy">Mua ngay</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- //shop info -->
-    <div class="row">
-        <div class="shop col-10">
-            <div class="avatar col-1 flex-column">
-                <img src="{{Shop.ImageUrl}}" />
-            </div>
-            <div class="col-3">
-                <h2 class="black">{{Shop.NickName}}</h2>
-                <h2>Online</h2>
-                <button id="chat"><ion-icon name="chatbubbles-outline"></ion-icon>Chat ngay</button>
-                <button id="cart"><ion-icon name="cart-outline"></ion-icon>Xem shop</button>
-            </div>
-            <div class="col-3 flex-column">
-                <h2>Đánh giá: <span>200{{Item.TotalRating}}</span></h2>
-                <h2>Sản phẩm: <span>10{{Item.TotalItem}}</span></h2>
-            </div>
-            <div class="col-5 flex-column">
-                <h2>Thời gian tham gia: <span>{{Item.CreatedTime}}</span></h2>
-                <h2>Số người theo dõi <span>1</span></h2>
-            </div>
-        </div>
-    </div>
-
-    <!-- //additional scripts and styles -->
-    <head>
-        <script src="~/Assets/itemService.js"></script>
-        <script src="~/Assets/itemController.js"></script>
-        <link href="~/Style/ItemPage.css" rel="stylesheet" type="text/css" />
-    </head>
-    <body ng-app="myApp" ng-controller="itemController">
-        <h1 id="productid" data-title="@ViewBag.ProductId"></h1>
-    </body>
     <!-- //product details -->
     <div class="row">
         <div class="col-8 detail">
