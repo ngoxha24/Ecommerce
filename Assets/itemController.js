@@ -47,7 +47,7 @@
 
     $scope.getCart();
 
-    // This function is called when the user clicks the "Add to Wishlist" button
+    // This function is called when the user clicks the "Add to Wishlist" button G
     $scope.addToWishlist = function (item) {
         itemService.addToWishlist(item);
     }
