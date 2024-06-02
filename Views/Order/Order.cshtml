@@ -5,3 +5,70 @@
 
 <h2>Order</h2>
 
+<!-- This is the Order page. -->
+<!-- It is a simple page that displays the order details. G-->
+<head>
+    <script src="~/Assets/orderService.js"></script>
+    <script src="~/Assets/orderController.js"></script>
+    <link href="~/Style/OrderPage.css" rel="stylesheet" type="text/css" />
+</head>
+<body ng-app="myApp" ng-controller="itemController">
+    <h1 id="productid" data-title="@ViewBag.ProductId"></h1>
+    <div class="row">
+        <div class="redirect col-10">
+            <a href="~/Home" style="color: red">Trang chủ >></a>
+            <a href="~/Home" style="color: red">{{Item.ItemType}} >></a>
+            <a href="~/Home">@ViewBag.ProductName</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-10 product">
+            <div class="col-5" id="image-product">
+                <img src="{{Categories[currentCate].ImageUrl}}" />
+                <div class="share">
+                    <h2>
+                        Chia sẻ:      <i class="fa-brands fa-facebook-f" style="color: lightblue"></i>
+                        <i class="fa-brands fa-instagram" style="color: orange"></i>
+                        <i class="fa-brands fa-facebook-messenger" style="color: blueviolet"></i>
+                        <i class="fa-brands fa-twitter" style="color: lightskyblue"></i>
+                    </h2>
+                </div>
+            </div>
+            <div class="product-info col-7">
+                <h2 id="product-title">{{Item.ItemName}}</h2>
+                <ul>
+                    <li>
+                        4.9
+                        <span class="fa fa-star2 checked"></span>
+                        <span class="fa fa-star2 checked"></span>
+                        <span class="fa fa-star2 checked"></span>
+                        <span class="fa fa-star checked"></span>
+                    </li>
+                    <li>2000 đánh giá</li>
+                    <li>{{Item.TotalOrder}} đã bán</li>
+                </ul>
+                <div class="nav-option
+                ">
+                    <button>Giá cả và đặt hàng</button>
+                    <button>Chi tiết sản phẩm</button>
+                    <button>Mô tả sản phẩm</button>
+                </div>
+                <div id="description">
+                    <h2 id="price" ng-if="Categories[currentCate].QuantityDiscount == 0">
+                        {{Categories[currentCate].Price}}.000vnđ
+                    </h2>
+                    <h2 id="price" ng-if="Categories[currentCate].QuantityDiscount > 0">
+                        <span id="remove" style="color: black; font-size: 1rem">{{Categories[currentCate].Price}}.000vnđ</span>
+                        <span>{{Categories[currentCate].DiscountPrice}}.000vnđ</span>
+                    </h2>
+                    <div class="quantity">
+                        <h2>Số lượng</h2>
+                        <input type="number" id="quantity" value="1" min="1" max="100" />
+                    </div>
+                    <button id="add-to-cart">Thêm vào giỏ hàng</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
