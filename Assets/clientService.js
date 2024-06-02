@@ -78,6 +78,22 @@ app.service("infoService", function ($http) {
     }
 })
 
-app.service("ItemService", function ($http) {
-
+app.service("itemService", function ($http) {
+    this.getByKeyword = function (keyword) {
+        var response = $http({
+            method: 'get',
+            url: 'product/getbykeyword',
+            params: {
+                Keyword: keyword,
+            }
+        });
+        return response;
+    }
+    this.getItemType = function () {
+        var response = $http({
+            method: 'get',
+            url: 'item/getitemtype'
+        });
+        return response;
+    }
 })
