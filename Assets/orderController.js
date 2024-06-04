@@ -25,25 +25,6 @@ app.controller("orderControler", function ($scope, orderService) {
         $scope.total = orderService.getTotal();
         $scope.totalItem = orderService.getTotalItem();
     }
-    $scope.addOrder = function (item) {
-        orderService.addOrder(item);
-        $scope.order = orderService.getOrder();
-        $scope.total = orderService.getTotal();
-        $scope.totalItem = orderService.getTotalItem();
-    }
-    $scope.updateOrder = function (item) {
-        orderService.updateOrder(item);
-        $scope.order = orderService.getOrder();
-        $scope.total = orderService.getTotal();
-        $scope.totalItem = orderService.getTotalItem();
-    }
-    $scope.deleteOrder = function (item) {
-        orderService.deleteOrder(item);
-        $scope.order = orderService.getOrder();
-        $scope.total = orderService.getTotal();
-        $scope.totalItem = orderService.getTotalItem();
-    
-    }   
     
 }
 )
