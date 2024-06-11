@@ -198,6 +198,7 @@
     <Compile Include="API\homeController.cs" />
     <Compile Include="API\infoController.cs" />
     <Compile Include="API\itemController.cs" />
+    <Compile Include="API\sellerController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -807,6 +808,10 @@
     <Content Include="Views\Manager1\Manager1.cshtml" />
     <Content Include="Views\Order\Order.cshtml" />
     <Content Include="Views\Client\Product.cshtml" />
+    <Content Include="Views\Client\itemList.cshtml" />
+    <Content Include="Views\Client\Order.cshtml" />
+    <Content Include="Views\Client\orderTracking.cshtml" />
+    <Content Include="Views\Client\Support.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

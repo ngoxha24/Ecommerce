@@ -1,0 +1,171 @@
+﻿.card_wrapper{
+    position: relative;
+}
+.content {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    gap: 0;
+    background: #f5f5f5;
+    padding: 0;
+    height: auto;
+}
+.itemType {
+    display: grid;
+    grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
+    padding: 0;
+    background: white;
+
+}
+.itemType button{
+    height: 10rem;  
+    outline: 0;
+    border: 1px solid #f5f5f5;
+    background: white;
+    width: 100%;
+    transition: transform .5s ease;
+    transform: scaleX(1);
+    
+}
+.itemType button:hover{
+    transform: scaleX(1.05);
+    color: red;
+}
+.itemType h2{
+    font-size: 0.9rem;
+    font-weight: 300;
+    
+}
+#title1{
+    grid-column: span 10;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    font-weight: 500;
+    padding-top: 1rem;
+    
+}
+.flashsale{
+    padding: 0 !important;
+    margin-top: 1rem;
+    background: white;
+}
+.sale {
+    display: grid;
+    grid-template-columns: 15% 15% 15% 15% 15% 15%;
+    padding: 0;
+    background: white;
+    gap: 10px;
+}
+.sale img{
+    width: 100%;
+    
+    
+}
+.salechildren{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+
+}
+#saleTitle{
+    color: red;
+    background: white;
+    width: 100%;
+    font-size: 1.3rem;
+    padding: 1rem 1rem;
+}
+.sale h2{
+    font-size: 1rem;
+    color: red;
+    font-weight: 300;
+}
+progress {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 10px;
+}
+
+progress::-webkit-progress-bar {
+    background-color: #eee;
+}
+
+progress::-webkit-progress-value {
+    background-color: red;
+    border-radius: 20px;
+}
+
+progress::-moz-progress-bar {
+    background-color: red;
+}
+
+progress[value]::-ms-fill {
+    background-color: red;
+}
+
+.itemList{
+    margin-top: 2rem;
+    background: white;
+}
+.itemList h2{
+    color: red;
+    width: 100%;
+    text-align: center;
+    padding: 1rem 0;
+    border-bottom: 3px solid red;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+.list{
+    display: grid;
+    grid-template-columns: 15% 15% 15% 15% 15% 15%;
+    margin-top: 1rem;
+    background: #f5f5f5;
+
+}
+.list img{
+    width: 100%;
+}
+.list h3{
+    font-weight: 400;
+    font-size: 0.9rem;
+     display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.price{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+}
+.list h4{
+    font-weight: 300;
+    font-size: 1rem;
+    color: red;
+}
+.list h5{
+    font-weight: 300;
+    color: black;
+    font-size: 0.8rem;
+
+}
+.list a{
+    padding: 0.5rem;
+    color: black;
+    transition: transform 0.5s ease;
+    transform: scaleY(1);
+}
+
+.list a:hover{
+    border: 1px ridge red;
+    border-radius: 10px;
+    transform: scaleY(1.005);
+}
+.clamp-lines {
+   
+}
+

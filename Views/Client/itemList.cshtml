@@ -1,0 +1,130 @@
+﻿@{
+    ViewBag.Title = "Danh mục sản phẩm";
+}
+<head>
+    <link href="~/Style/myShopPage.css" rel="stylesheet" type="text/css" />
+    <script src="~/Assets/clientService.js"></script>
+    <script src="~/Assets/clientController.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="sellerController">
+    <div class="col-12 seller">
+        <div class="left-nav col-2">
+            <a href="~/myshop"><ion-icon name="home-outline"></ion-icon>Trang chính</a>
+            <a href="~/myshop/itemlist"><ion-icon name="list-outline"></ion-icon>Danh sách sản phẩm</a>
+            <a href="~/myshop/ordertracking?status=1"><ion-icon name="cart-outline"></ion-icon>Quản lý đơn hàng</a>
+            <a href="~/myshop/support"><ion-icon name="layers-outline"></ion-icon>Chăm sóc khách hàng</a>
+
+        </div>
+        <div class="intension col-7">
+            <div class="itemlist-nav col-12">
+                <div class="col-12" style="display: flex; justify-content: space-between">
+                    <select ng-model="Option" ng-change="changeOption()">
+                        <option value="0" selected>--Trạng thái--</option>
+                        <option value="1">Còn hàng</option>
+                        <option value="2">Hết hàng</option>
+                        <option value="3">Đang tạm khóa</option>
+                    </select>
+                    <button ng-click="addModal()"><i class="fa-solid fa-plus"></i>Thêm mới sản phẩm</button>
+                </div>
+                <input placeholder="Tìm kiếm sản phẩm" ng-model="Keyword" ng-change="Search()"/>
+            </div>
+            <div class="item-list col-12">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="small-th">STT</th>
+                            <th class="normal-th">Ảnh</th>
+                            <th class="normal-th">Tên sản phẩm</th>
+                            <th class="normal-th">Phân loại</th>
+                            <th class="normal-th">Giá niêm yết</th>
+                            <th class="small-th">Số lượng</th>
+                            <th class="small-th">Đã bán</th>
+                            <th class="normal-th">Hành động</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr dir-paginate="item in itemList|filter: q | itemsPerPage : 10" current-page="pageIndex">
+                            <td>{{(pageIndex - 1) * 10 + $index + 1}}</td>
+                            <td>
+                                <img ng-src="{{item.ItemImageUrl}}" />
+                            </td>
+                            <td><span class="clamp-lines">{{item.ItemName}}</span></td>
+                            <td>{{item.ItemType}}</td>
+                            <td style="color: red">{{formatPrice(item.Price)}}.000vnđ</td>
+                            <td>{{item.Quantity}}</td>
+                            <td>{{item.TotalOrder}}</td>
+                            <td>
+                                <button title="Chỉnh sửa sản phẩm" id="edit" ng-click="updateModal(item.Id)"><ion-icon name="create-outline"></ion-icon></button>
+                                <button title="Tạm khóa sản phẩm" ng-if="item.Status == 1" id="edit" ng-click="lockItem(itemList[(pageIndex - 1) * 10 + $index])"><ion-icon name="lock-closed-outline"></ion-icon></button>
+                                <button title="Mở khóa sản phẩm" ng-if="item.Status == 0" id="edit" ng-click="lockItem(itemList[(pageIndex - 1) * 10 + $index])"><ion-icon name="lock-open-outline"></ion-icon></button>
+                                <button title="Xóa sản phẩm" id="delete"><ion-icon name="trash-outline"></ion-icon></button>
+
+                            </td>
+
+                        </tr>
+                        <tr ng-if="itemList.length == 0">
+                            <td colspan="8">Không có sản phẩm nào!</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <dir-pagination-controls boundary-links="false" direction-links="true"> </dir-pagination-controls>
+            </div>
+            
+        </div>
+        <div id="modal-item">
+            <button id="close-modal" ng-click="closeModal()">X</button>
+            <h2 id="modal-title" ng-if="Action == 'Add'">Thêm mới sản phẩm</h2>
+            <h2 id="modal-title" ng-if="Action == 'Update'">Cập nhật sản phẩm</h2>
+            <div class="modal-content1 col-12">
+                
+                    <div class="cate-info col-12" ng-if="cateList.length > 0">
+                        <h2 style="font-size: 1rem; color: red; margin-top: 3rem;">Danh sách kiểu/ mẫu</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th class="small-th">STT</th>
+                                    <th class="normal-th">Ảnh</th>
+                                    <th class="normal-th">Mã loại</th>
+                                    <th class="normal-th">Giá</th>
+                                    <th class="small-th">Số lượng</th>
+                                    <th class="normal-th">Giá giảm giá</th>
+                                    <th class="small-th">Số lượng giảm giá</th>
+                                    <th class="normal-th">Hành động</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="cate in cateList">
+                                    <td>{{$index + 1}}</td>
+                                    <td>
+                                        <img ng-src="{{cate.ImageUrl}}" />
+                                    </td>
+                                    <td>{{cate.CateId}}</td>
+                                    <td>{{formatPrice(cate.Price)}}.000vnđ</td>
+                                    <td>{{cate.Quantity}}</td>
+                                    <td>{{formatPrice(cate.DiscountPrice)}}</td>
+                                    <td>{{cate.QuantityDiscount}}</td>
+                                    <td>
+                                        <button ng-click="showUpdateCate(cateList[$index])"><ion-icon name="create-outline"></ion-icon></button>
+                                        <button ng-click="deleteCate(cateList[$index])"><ion-icon name="trash-outline"></ion-icon></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="col-12"style="display: flex; justify-content: center; margin-top: 2rem">
+                <div class="col-6" style="display: flex; justify-content: center;">
+                    <button id="add-update" ng-if="Action == 'Add'" ng-click="addItem()">Thêm mới</button>
+                    <button id="add-update" ng-if="Action == 'Update'" ng-click="updateItem()">Cập nhật</button>
+                    <button id="deny" ng-click="closeModal()">Hủy bỏ</button>
+                </div>
+                
+            </div>
+        </div>
+        <div class="notice col-2">
+
+        </div>
+    </div>
+</body>
