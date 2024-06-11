@@ -1,0 +1,111 @@
+﻿@{
+    ViewBag.Title = "Quản lý đơn hàng";
+}
+<head>
+    <link href="~/Style/myShopPage.css" rel="stylesheet" type="text/css" />
+    <script src="~/Assets/clientService.js"></script>
+    <script src="~/Assets/clientController.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="trackingController">
+    <h1 id="data" data-title="@ViewBag.Status"></h1>
+    <div class="col-12 seller">
+        
+        <div class="intension col-7">
+            
+            <div class="order-list">
+                <table>
+                    <thead>
+                        <tr ng-if="orderList.length > 0">
+                            <th>STT</th>
+                            <th>Mã loại</th>
+
+                            <th style="width: 25%;">Tên sản phẩm</th>
+
+                            <th>SĐT</th>
+                            <th>Số lượng</th>
+                            <th>Giá sản phẩm</th>
+                            <th>Tổng giá</th>
+                            <th>#</th>
+                        </tr>
+                        <tr ng-if="orderList.length == 0">
+                            <th id="notfound">STT</th>
+                            <th id="notfound">Mã loại</th>
+
+                            <th id="notfound">Tên sản phẩm</th>
+
+                            <th id="notfound">SĐT</th>
+                            <th id="notfound">Số lượng</th>
+                            <th id="notfound">Giá sản phẩm</th>
+                            <th id="notfound">Tổng giá</th>
+                            <th id="notfound">#</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="order in orderList"> 
+                            <td>{{$index + 1}}</td>
+                            <td>{{order.CateId}}</td>
+                            
+                            <td class="clamp-lines">{{order.ItemName}}</td>
+                            
+                            <td>{{order.CustomerPhoneNumberAlter}}</td>
+                            <td id="price">{{order.TotalAmount + order.TotalDiscount}}</td>
+                            <td id="price">{{formatPrice(order.Price)}}.000đ</td>
+                            <td id="price">{{formatPrice(order.Price * order.TotalAmount + order.TotalDiscount * order.PriceDiscount) }}.000đ</td>
+                            <td>
+                                <button title="Xem đơn hàng"><ion-icon name="eye-outline"></ion-icon></button>
+                                <button title="Chỉnh sửa đơn hàng" ng-click="editTracking(orderList[$index])"><ion-icon name="create-outline"></ion-icon></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="8" style="text-align: center" ng-if="orderList.length == 0">Không tìm thấy đơn hàng nào</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="order-info">
+
+            </div>
+            <div class="trackingPane">
+                <div class="tracking">
+                    <h2 id="tracking-title">Cập nhật quá trình giao hàng</h2>
+                    <button id="close-modal" ng-click="closeTrackingModal()">X</button>
+                    <div style="display: flex; justify-content: center">
+                        <div class="col-4" style="border-right: 2px solid #f5f5f5; padding: 0 10px">
+                            <button ng-click="updateDriver()" ng-if="Status == 2" ng-disabled="Status >= 4">Cập nhật tài xế</button>
+                            <button ng-click="updateDelivery()" ng-if="Status >= 3">Cập nhật quá trình</button>
+                            <button ng-click="updateNote()" ng-if="Status != 5">Cập nhật ghi chú</button>
+                        </div>
+                        <div class="col-8">
+
+                            <table style="width: 100%">
+                                <tr ng-repeat="delivery in deliveryList">
+                                    <td>
+                                        {{formatDateTime(delivery.CreatedTime)}}:
+
+                                    </td>
+                                    <td>
+                                        {{delivery.CurrentPlace}}
+                                        <h2 ng-if="delivery.CurrentPlace == 'Cập nhật tài xế'" style="font-size: 0.9rem; color: red">Tên tài xế:{{Order.DeliverName}}</h2>
+                                        <h2 ng-if="delivery.CurrentPlace == 'Cập nhật tài xế'" style="font-size: 0.9rem; color: red">SĐT: {{Order.DeliveryPhoneNumber}}</h2>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div style="border-top: 2px solid blueviolet; margin-top: 1rem; padding-top: 1.5rem; display: flex; justify-content: space-evenly">
+                        <span style="color: red; font-style: italic">Ghi chú của người mua</span>
+                        <span >{{Order.CustomerNote}}</span>
+                    </div>
+                    <div class="tracking-option">
+                        <button ng-if="Status == 1" ng-click="acceptOrder()">Xác nhận đơn hàng</button>
+                        <button ng-if="Status < 3">Hủy đơn hàng</button>
+                        <button ng-if="Status == 3" ng-click="finishDelivery()">Giao hàng thành công</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="notice col-2">
+
+        </div>
+    </div>
+</body>

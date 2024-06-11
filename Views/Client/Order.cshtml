@@ -1,0 +1,106 @@
+﻿
+@{
+    ViewBag.Title = "Chi tiết đơn hàng";
+}
+
+<head>
+    <link href="~/Style/orderPage.css" rel="stylesheet" type="text/css" />
+    <script src="~/Assets/clientService.js"></script>
+    <script src="~/Assets/clientController.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="orderController">
+    <h1 id="data" data-title="@ViewBag.OrderType"></h1>
+    <div class="orderPane col-10">
+        
+        <div class="col-12 order-table" ng-repeat="order in orderList">
+            <div id="shop-name"><ion-icon name="storefront-outline"></ion-icon>Cửa hàng: {{order.SellerName}}</div>
+            <div class="col-12 order-child">
+                <div class="col-2" style="display: flex; justify-content:center">
+                    <img ng-src="{{order.CateImageUrl}}" />
+
+                </div>
+                <div class="col-10">
+                    <a href="/product?id={{order.ItemId}}">{{order.ItemName}}</a>
+                    <div class="order-info">
+                        <h3>Tên phân loại: {{order.CateId}}</h3>
+                        <h3>Phân loại: {{order.CateName}}</h3>
+                        <h3 style="text-align: right">Ngày đặt: {{formatDateTime(order.OrderedTime)}}</h3>
+                        <h3>Số lượng: {{order.TotalAmount + order.TotalDiscount}}</h3>
+                        <h3>Giá sản phẩm: {{formatPrice(order.Price)}}.000đ</h3>
+                        <h3 id="price" style="text-align: right">Tổng giá sản phẩm: {{formatPrice(order.Price * order.TotalAmount + order.TotalDiscount * order.PriceDiscount) }}.000đ</h3>
+                        <button ng-click="openRatingModal(order)" ng-if="order.Status == 5">Đánh giá sản phẩm</button>
+                        <h3 ng-if="order.Status != 5"></h3>
+                        <button ng-click="getDeliveryList(orderList[$index], $index)">Tiến trình đặt hàng</button>
+                        <button id="delete" ng-disabled="Status > 2 || Status == 0" ng-click="abortOrder(orderList[$index])">Hủy đơn hàng</button>
+                        
+                    </div>
+                </div>
+
+            </div>
+            
+            <div class="deli-info col-12" id="deli-{{order.Id}}">
+                <div class="deli-left col-6">
+                    <h2>Tên người bán hàng: {{order.SellerName}}</h2>
+                    <h2>SĐT liên hệ: {{order.SellerPhoneNumber}}</h2>
+                    <h2>Địa chỉ cửa hàng:  {{order.SellerAddress}}</h2>
+                    <h2>Tên người đặt:  {{order.CustomerNameAlter}}</h2>
+                    <h2>SĐT người đặt:  {{order.CustomerPhoneNumberAlter}}</h2>
+                    <h2>Địa chỉ người đặt:  {{order.CustomerAddressAlter}}</h2>
+                    <h2>Ghi chú của người bán:  {{order.SellerNote }}</h2>
+                    <h2 ng-if="order.SellerNote == null">Ghi chú của người bán: Không có</h2>
+                </div>
+                <div class="deli-right col-6">
+                    <table style="width: 100%">
+                        <tr ng-repeat="delivery in deliveryList">
+                            <td>
+                                {{formatDateTime(delivery.CreatedTime)}}:
+
+                            </td>
+                            <td>
+                                {{delivery.CurrentPlace}}
+                                <h2 ng-if="delivery.CurrentPlace == 'Cập nhật tài xế'" style="font-size: 0.9rem; color: red">Tên tài xế:{{Order.DeliverName}}</h2>
+                                <h2 ng-if="delivery.CurrentPlace == 'Cập nhật tài xế'" style="font-size: 0.9rem; color: red">SĐT: {{Order.DeliveryPhoneNumber}}</h2>
+                                <h2 ng-if="delivery.CurrentPlace == 'Đơn hàng bị hủy'" style="font-size: 0.9rem; color: red">Lý do: {{Order.Description}}</h2>
+                            </td>
+                            
+                        </tr>
+                        <tr ng-if="order.Status == 4">
+                            <td></td>
+                            <td><button id="accept" ng-click="acceptDeli()">Xác nhận đã nhận hàng</button></td>
+                        </tr>
+                        
+                    </table>
+                </div>
+            </div>
+        </div>
+        <h2 ng-if="orderList.length == 0" style="text-align: center; font-size: 1.2rem; margin-top: 1rem;">Không tìm thấy đơn hàng nào thỏa mãn!</h2>
+    </div>
+    <div class="ratingPane">
+        <div class="rating-content">
+            <h2>Đánh giá đơn hàng</h2>
+            <img ng-src="{{Order.CateImageUrl}}" />
+            <h3 class="clamp-lines">{{Order.ItemName}}</h3>
+            <h3>Mã phân loại</h3>
+            <h4>{{Order.CateId}}</h4>
+            <h3>Tên phân loại</h3>
+            <h4>{{Order.CateName}}</h4>
+            <h3>Đánh giá</h3>
+            <div>
+                <select ng-model="Rate.RatingStar">
+                    <option value="1">1 sao</option>
+                    <option value="2">2 sao</option>
+                    <option value="3">3 sao</option>
+                    <option value="4">4 sao</option>
+                    <option value="5">5 sao</option>
+                </select>
+                
+            </div>
+            <h3>Nội dung đánh giá</h3>
+            <textarea ng-model="Rate.Description"></textarea>
+            <button ng-click="rateItem()" id="sent">Gửi đánh giá</button>
+            <button ng-click="closeRatingModal()" id="cancel">Hủy bỏ</button>
+             
+        </div>
+    </div>
+   
+</body>
