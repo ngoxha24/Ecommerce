@@ -198,6 +198,7 @@
     <Compile Include="API\homeController.cs" />
     <Compile Include="API\infoController.cs" />
     <Compile Include="API\itemController.cs" />
+    <Compile Include="API\sellerController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
