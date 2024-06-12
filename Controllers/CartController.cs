@@ -11,19 +11,20 @@ namespace Ecommerce.Controllers
         // GET: cart
         [Authorize]
         [Route("cart")]
-        
         public ActionResult Cart()
         {
+            ViewBag.Title = ViewBag.ProductName;
             return View();
         }
+
         // POST: cart
         [Authorize]
         [Route("cart")]
         [HttpPost]
         public ActionResult Cart(FormCollection form)
         {
+            ViewBag.Title = ViewBag.ProductName;
             return View();
         }
-        
     }
 }

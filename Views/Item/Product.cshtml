@@ -1,5 +1,4 @@
-﻿
-@{ 
+﻿@{ 
     ViewBag.Title = ViewBag.ProductName;
 }
 <head>
@@ -7,7 +6,7 @@
     <script src="~/Assets/itemController.js"></script>
     <link href="~/Style/ItemPage.css" rel="stylesheet" type="text/css" />
 </head>
-<body ng-app="myApp" ng-controller="itemController">
+<body ng-app="itemApp" ng-controller="itemController">
     <h1 id="productid" data-title="@ViewBag.ProductId"></h1>
     <div class="row">
         <div class="redirect col-10">
@@ -19,7 +18,7 @@
     <div class="row">
         <div class="col-10 product">
             <div class="col-5" id="image-product">
-                <img src="{{Categories[currentCate].ImageUrl}}" />
+                <img ng-src="{{currentCate.ImageUrl}}" />
                 <div class="share">
                     <h2>
                         Chia sẻ:      <i class="fa-brands fa-facebook-f" style="color: lightblue"></i>
@@ -34,12 +33,12 @@
                 <h2 id="product-title">{{Item.ItemName}}</h2>
                 <ul>
                     <li>
-                        4.9
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
+                        {{Item.RatingScore}}
+                        <span class="fa fa-star checked" ng-if="Item.RatingScore > 0"></span>
+                        <span class="fa fa-star checked" ng-if="Item.RatingScore > 1"></span>
+                        <span class="fa fa-star checked" ng-if="Item.RatingScore > 2"></span>
+                        <span class="fa fa-star checked" ng-if="Item.RatingScore > 3"></span>
+                        <span class="fa fa-star checked" ng-if="Item.RatingScore >= 4"></span>
                     </li>
                     <li>2000 đánh giá</li>
                     <li>{{Item.TotalOrder}} đã bán</li>
@@ -47,16 +46,16 @@
                 </ul>
                 <div class="nav-option">
                     <button>Giá cả và đặt hàng</button>
-                    <button>Chi tiết sản phẩm</button>
-                    <button>Mô tả sản phẩm</button>
+                    <button><a href="#detail1">Chi tiết sản phẩm</a></button>
+                    <button><a href="#descrip1">Mô tả sản phẩm</a></button>
                 </div>
                 <div id="description">
-                    <h2 id="price" ng-if="Categories[currentCate].QuantityDiscount == 0">
-                        {{Categories[currentCate].Price}}.000vnđ
+                    <h2 id="price" ng-if="currentCate.QuantityDiscount == 0">
+                        <span>{{currentCate.Price}}.000vnđ</span>
                     </h2>
-                    <h2 id="price" ng-if="Categories[currentCate].QuantityDiscount > 0">
-                        <span id="remove" style="color: black; font-size: 1rem">{{Categories[currentCate].Price}}.000vnđ</span>
-                        <span>{{Categories[currentCate].DiscountPrice}}.000vnđ</span>
+                    <h2 id="price" ng-if="currentCate.QuantityDiscount > 0">
+                        <span id="remove" style="color: black; font-size: 1rem">{{currentCate.Price}}.000vnđ</span>
+                        <span>{{currentCate.DiscountPrice}}.000vnđ</span>
                     </h2>
                     <h2>Voucher</h2>
                     <h2>Trống</h2>
@@ -68,24 +67,111 @@
                     </div>
                     <h2>Số lượng</h2>
                     <div>
-                        <input type="number" min="1" />
+                        <input type="number" min="1" ng-model="totalBuy"/>
                         <span style="font-size:0.9rem; font-weight: 500">
-                            {{Categories[currentCate].Quantity}} sản phẩm có sẵn
+                            {{currentCate.Quantity}} sản phẩm có sẵn, <span ng-if="currentCate.QuantityDiscount > 0 && currentCate.DiscountPrice > 0">{{currentCate.QuantityDiscount}} giảm giá</span>
                         </span>
                     </div>
                 </div>
                 <div class="pay">
-                    <button><ion-icon name="cart-outline"></ion-icon>Thêm vào giỏ hàng</button>
-                    <button id="buy">Mua ngay</button>
+                    <button ng-click="addCart()"><ion-icon name="cart-outline" ng-if="User.Id != Item.SellerId"></ion-icon>Thêm vào giỏ hàng</button>
+                    <button id="buy" ng-click="showOrderModal(currentCate)" ng-if="User.Id != Item.SellerId">Mua ngay</button>
                 </div>
+                <h2 style="font-size: 1rem; font-weight: 500; margin-top: 1rem; font-style: italic; text-align: center; color: red" ng-if="User.Id == Item.SellerId">Bạn không thể mua sản phẩm của chính mình! </h2>
             </div>
 
+        </div>
+        <div class="order-modal">
+            <div class="order-modal-content">
+                <h2 id="modal-title">Xác nhận đơn hàng</h2>
+                <div class="buyer-info">
+                    <h2>Thông tin người nhận hàng</h2>
+                    <div>
+                        <input type="checkbox" id="default" ng-model="useDefault" ng-click="useDefaultInfo()"/>
+                        <label for="default">Sử dụng thông tin hiện tại</label>
+                    </div>
+                    <div class="buyer-input">
+                        <input ng-model="orderTable.CustomerNameAlter" required pattern=".*\\S.*" />
+                        <h3>Tên người nhận</h3>
+                    </div>
+                    <div class="buyer-input">
+
+                        <input ng-model="orderTable.CustomerPhoneNumberAlter" required pattern = ".*\\S.*"/>
+                        <h3>SĐT người nhận</h3>
+                    </div>
+                    <div class="buyer-input">
+                        <input ng-model="orderTable.CustomerAddressAlter"  required pattern = ".*\\S.*"/>
+                        <h3>Địa chỉ người nhận</h3>
+
+                    </div>
+                    <div class="buyer-input">
+                        <input ng-model="orderTable.CustomerNote" required pattern = ".*\\S.*" />
+                        <h3>Ghi chú cho người bán</h3>
+
+                    </div>
+
+                    
+                </div>
+                <div class="shop-info">
+                    <h2>Cửa hàng bán sản phẩm: {{Shop.Name}}</h2>
+
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="small-th">ID</th>
+                            <th>Mã sản phẩm</th>
+                            <th>Tên loại sản phẩm</th>
+                            <th>Ảnh sản phẩm</th>
+                            <th>Tên sản phẩm</th>
+                            <th class="small-th">Giá sản phẩm</th>
+                            <th class="small-th">Số lượng</th>
+                            <th>Tổng giá</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-if="orderTable.TotalDiscount > 0">
+                            <td class="small-th">{{$index + 1}}</td>
+                            <td>{{currentCate.CateId}}</td>
+                            <td>{{currentCate.CateName}}</td>
+                            <td>
+                                <img ng-src={{currentCate.ImageUrl}}>
+                            </td>
+                            <td style="display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; text-overflow: ellipsis;width: 100%">{{currentCate.ItemName}}</td>
+                            <td class="small-th">{{orderTable.PriceDiscount}}.000đ</td>
+                            <td class="small-th">{{orderTable.TotalDiscount}}</td>
+                            <td>{{formatPrice(orderTable.TotalDiscount * orderTable.PriceDiscount)}}.000đ</td>
+
+                        </tr>
+                        <tr ng-if="orderTable.TotalAmount > 0">
+                            <td class="small-th">{{$index + 1}}</td>
+                            <td>{{currentCate.CateId}}</td>
+                            <td>{{currentCate.CateName}}</td>
+                            <td>
+                                <img ng-src={{currentCate.ImageUrl}}>
+                            </td>
+                            <td style="display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; text-overflow: ellipsis;width: 100%">{{currentCate.ItemName}}</td>
+                            <td class="small-th">{{orderTable.Price}}.000đ</td>
+                            <td class="small-th">{{orderTable.TotalAmount}}</td>
+                            <td>{{formatPrice(orderTable.Price * orderTable.TotalAmount)}}.000đ</td>
+
+                        </tr>
+                    </tbody>
+                </table>
+                <h4>Tổng giá trị: {{formatPrice(orderTable.Price * orderTable.TotalAmount + orderTable.TotalDiscount * orderTable.PriceDiscount)}}.000đ</h4>
+                <div class="button-list col-12">
+                    <button ng-click="buyProduct()">Xác nhận mua</button>
+                    <button ng-click="closeOrderModal()">Hủy</button>
+                </div>
+                
+            </div>
         </div>
     </div>
     <div class="row">
         <div class="shop col-10">
             <div class="avatar col-1 flex-column">
-                <img src="{{Shop.ImageUrl}}" />
+                <img ng-src="{{Shop.ImageUrl}}" />
                 
             </div>
             <div class="col-3">
@@ -104,33 +190,58 @@
             </div>
         </div>
     </div>
-    
-
-        <div class="col-8 detail">
-            <h2>Chi tiết sản phẩm</h2>
+    <!-- từ đây ở dưới đã thêm -->
+    <div class="row">
+        <div class="col-6 detail">
+            <h2 id="detail1">Chi tiết sản phẩm</h2>
             <ul>
                 <li> Danh mục sản phẩm: 
                     <a href="~/Home" style="color: red">Trang chủ >></a>
                     <a href="~/Home" style="color: red">{{Item.ItemType}} >></a>
                     <a href="~/Home">@ViewBag.ProductName</a>
                 </li>
-                <li ng-repeat="detail in Detail">
+                <li ng-repeat="detail in DC">
                     {{detail}}
                 </li>
             </ul>
         </div>
-        <div class="col-2"></div>
+        <div class="col-4 rating">
+            <h2 style="padding: 10px; font-size: 1.3rem; color: red;">Đánh giá sản phẩm</h2>
+            <div class="col-12 rating-child" ng-repeat="rate in ratingList">
+                <div class="">
+                    <h2>Người dùng: {{rate.CustomerName}}</h2>
+                    <h2>
+                        Đánh giá: <i class="fa-regular fa-star checked" ng-if="rate.RatingStar >= 1"></i>
+                        <i class="fa-regular fa-star checked" ng-if="rate.RatingStar >= 2"></i>
+                        <i class="fa-regular fa-star checked" ng-if="rate.RatingStar >= 3"></i>
+                        <i class="fa-regular fa-star checked" ng-if="rate.RatingStar >= 4"></i>
+                        <i class="fa-regular fa-star checked" ng-if="rate.RatingStar >= 5"></i>
+                        <i class="fa-regular fa-star" ng-if="rate.RatingStar < 1"></i>
+                        <i class="fa-regular fa-star" ng-if="rate.RatingStar < 2"></i>
+                        <i class="fa-regular fa-star" ng-if="rate.RatingStar < 3"></i>
+                        <i class="fa-regular fa-star" ng-if="rate.RatingStar < 4"></i>
+                        <i class="fa-regular fa-star" ng-if="rate.RatingStar < 5"></i>
+                    </h2>
+
+                </div>
+                <div class="">
+                    <h2 style="text-align: right">{{formatDate(rate.CreatedTime)}}</h2>
+                    <h2 style="text-align: right">Phân loại: {{rate.CateName}}</h2>
+                </div>
+                <textarea ng-model="rate.Description" readonly disabled></textarea>
+
+            </div>
+        </div>
     </div>
     <div class="row">
-        <div class="col-8 description">
-            <h2>Mô tả sản phẩm</h2>
+        <div class="col-6 description">
+            <h2 id="descrip1">Mô tả sản phẩm</h2>
             <ul>
-                <li ng-repeat="ele in Description">
-                    {{ele}}
+                <li ng-repeat="decript in DC">
+                    {{decript}}
                 </li>
             </ul>
         </div>
-        <div class="col-2"></div>
+        <div class="col-4"></div>
     </div>
 </body>
-
