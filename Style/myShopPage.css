@@ -1,0 +1,393 @@
+﻿.content{
+    background: #f5f5f5;
+}
+.seller{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+
+}
+.left-nav {
+    padding: 10px;
+    background: white;
+}
+.left-nav a{
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 1rem 0px;
+    font-size: 1rem;
+    font-weight: 300;
+    color: black;
+    border: 1px inset #f5f5f5;
+    border-radius: 5px;
+    
+    
+}
+.left-nav a:hover{
+    color: red;
+    background: #f5f5f5;
+    
+    box-shadow: 5px 5px rgba(0,0,0,0.4);
+    
+}
+.left-nav ion-icon{
+    margin-right: 10px;
+}
+
+.intension{
+    background: white;
+    margin: 2rem 1rem;
+    padding: 10px;
+}
+#title2{
+    margin: 1rem 0;
+    font-size: 1.2rem;
+    padding-left: 2rem;
+    
+}
+.todolist{
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+    gap: 10px ;
+}
+#todo-child{
+    width: 100%;
+    border-right: 2px solid #f5f5f5;
+
+}
+#todo-child h2{
+    text-align: center;
+    font-size: 1rem;
+}
+#data {
+    font-size: 1.4rem;
+    color: darkblue;
+}
+
+/*ItemList*/
+.itemlist-nav{
+    
+}
+.itemlist-nav select{
+    width: 25%;
+    text-align: center;
+    font-size: 0.9rem;
+}
+.itemlist-nav input{
+    width: 55%;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    width: 100%;
+    
+
+}
+.itemlist-nav button{
+    background: #f5f5f5;
+    border-radius: 8px;
+    
+    box-sizing: border-box;
+    color: green;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    height: 2rem;
+    padding: 0 1.6rem;
+    text-align: center;
+    text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
+    transition: all .5s;
+    touch-action: manipulation;
+}
+
+.itemlist-nav button:hover {
+    box-shadow: rgba(80, 63, 205, 0.5) 0 1px 10px;
+    transition-duration: .1s;
+}
+.itemlist-nav i{
+    margin-right: 5px;
+}
+.item-list table{
+    width: 100%;
+    margin-top: 1rem;
+    border-collapse: collapse;
+    
+}
+.item-list th, .item-list td {
+    padding: 5px;
+    text-align: center;
+    border: 1px solid #f5f5f5;
+}
+.item-list td{
+    font-size: 0.9rem;
+}
+.item-list img{
+    width: 100%;
+    height: 4rem;
+
+}
+.clamp-lines {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+   
+}
+.small-th{
+    width: 30px !important;
+}
+.normal-th{
+    width: 16%;
+}
+.item-list button{
+    background: white;
+    border-radius: 5px;
+    border: none;
+    margin: 5px;
+
+}
+.item-list tr:hover {
+    background: #8594e4;
+    
+}
+#edit {
+    background: #defcf9;
+}
+#delete {
+    background: #fd5959;
+}
+#modal-item {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    max-height: 100%;
+    overflow-y: auto;
+    background: white;
+    width: 0;
+    transition: width 0.5s ease;
+    border: 3px inset #dc2f2f;
+}
+#close-modal{
+    position: absolute;
+    top: 0px;
+    right: 5px;
+    border: none;
+    color: red;
+    background: white;
+
+}
+#modal-title {
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 2rem;
+    color: white;
+    background: linear-gradient(109.5deg, rgb(13, 11, 136) 9.4%, rgb(86, 255, 248) 78.4%);
+}
+.modal-content1{
+    display: flex;
+    justify-content: space-around;
+}
+.item-info{
+    display: grid;
+    grid-template-columns: 30% 70%;
+    gap: 20px;
+}
+.item-info h2{
+    font-size: 1rem;
+
+}
+.cate-info table{
+    width: 100%;
+    margin-top: 1rem;
+    border-collapse: collapse;
+    
+}
+.cate-info th, .cate-info td {
+    padding: 5px;
+    text-align: center;
+    border: 1px solid #f5f5f5;
+}
+.cate-info td{
+    font-size: 0.9rem;
+}
+.cate-info img{
+    width: 100%;
+    height: 4rem;
+
+}
+.cate-info button {
+    background: white;
+    border-radius: 5px;
+    border: none;
+    margin: 5px;
+}
+
+.cate-info tr:hover {
+    background: #8594e4;
+}
+
+#update-cate-title{
+    font-size: 1.2rem;
+    color: red;
+    text-align: center;
+    margin: 1rem 0;
+}
+.update-cate {
+    border-radius: 5px;
+    border: 2px inset red;
+    height: auto;
+    align-self: flex-start;
+}
+.cate-content {
+    display: grid;
+    grid-template-columns: 40% 55%;
+    gap: 20px;
+    padding: 10px;
+    position: relative;
+    
+}
+.shade{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    z-index: 999;
+}
+.cate-content h2{
+    font-size: 1rem;
+}
+.cate-content button{
+    grid-column: 1/3;
+    border-radius: 5px;
+    
+}
+.cate-content textarea {
+    height: 12rem;
+}
+.cate-content button:hover{
+    background: #97cba9;
+
+}
+#add-update, #deny {
+    margin-right: 2rem;
+    border-radius: 10px;
+    width: 120px;
+    height: 3rem;
+    background: white;
+    border: 2px solid #a2a8d3;
+}
+#add-update:hover {
+    background: #cbf078;
+
+}
+#deny:hover{
+    background: #fd5959;
+}
+
+/*Tracking*/
+.tracking-navbar{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+.tracking-navbar a{
+    width: 20%;
+    text-align: center;
+    border: 2px outset #f5f5f5;
+    color: black;
+    border-radius: 5px;
+    padding: 0.5rem;
+
+}
+.tracking-navbar a:hover{
+    color: white;
+    background: #fd5959;
+}
+
+#price{
+    color: red;
+    font-style: italic;
+}
+.current-pane {
+    color: white;
+    background: #fd5959;
+}
+.order-list button{
+    border: none;
+    background: white;
+}
+.order-list button:hover{
+    color: #fd5959;
+    border: 2px solid #f5f5f5;
+}
+/**/
+.trackingPane{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    top: 0;
+    left: 0;
+}
+.tracking{
+    display: block;
+    position: relative;
+    top: 15%;
+    left: 30%;
+    width: 40%;
+    background: white;
+    padding-bottom: 2rem;
+    transition: top .5s ease;
+    
+}
+#tracking-title {
+    margin-bottom: 1rem;
+    text-align: center;
+    background: linear-gradient(102.2deg, rgb(250, 45, 66) 9.6%, rgb(245, 104, 104) 96.1%);
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 400;
+    border-radius: 5px;
+    padding: 0.5rem;
+}
+.tracking button {
+    margin-top: 2rem;
+    width: 100%;
+    border-radius: 5px;
+    border: 2px inset;
+    transition: all .5s ease;
+    color: black;
+
+}
+.tracking button:hover{
+    background: white;
+    box-shadow: 1px 1px 1px 1px blueviolet;
+    
+}
+.tracking td{
+    text-align: center;
+    width: 50%;
+    padding-bottom: 1rem;
+
+}
+#close-modal {
+    margin-top: 0;
+    width: 20px !important;
+    background-color: transparent;
+
+}
+#close-modal:hover{
+    color: white;
+    border: none !important;
+}
+
+/**/
+#notfound{
+    width: calc(100%/8);
+}
+#swal2-title{
+    font-size: 1.3rem;
+}
