@@ -1,0 +1,187 @@
+.content{
+    background: none;
+    margin-top: 1rem;
+}
+.clamp-lines {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.order-navbar{
+    display: flex;
+    border-bottom: 2px solid red;
+    padding-bottom: 1rem;
+    justify-content: space-between;
+}
+.order-navbar a{
+    width: 19%;
+    border: 2px inset blueviolet;
+    text-align: center;
+    border-radius: 10px;
+    color: black;
+    padding: 0.5rem;
+
+}
+.current-pane {
+    background: #fd5959;
+    color: white;
+    
+}
+.order-navbar a:hover{
+    background: #fd5959;
+    color: white;
+}
+.order-table{
+    margin-top: 1rem;
+    border: 5px solid #f5f5f5;
+    padding: 10px 0;
+}
+#shop-name {
+    font-size: 1.2rem;
+    background: linear-gradient(-225deg, #5D9FFF 0%, #B8DCFF 48%, #6BBBFF 100%);
+    color: black;
+    padding: 0.5rem;
+}
+#shop-name ion-icon{
+    font-size: 1.2rem;
+    margin-right: 0.5rem;
+}
+.order-child{
+    display: flex;
+    justify-content: space-between;
+    border-radius: 5px;
+    
+    align-items: center;
+}
+.order-child img{
+    width: 80%;
+    
+
+
+}
+.order-child h3{
+    font-size: 1rem;
+    text-align: left;
+}
+.order-child a{
+    margin-bottom: 1rem;
+}
+.order-info{
+    display: grid;
+    grid-template-columns: 30% 30% 33%;
+    gap: 20px;
+
+}
+#price{
+    color: red;
+}
+.order-info button, #accept {
+    border: 2px solid blueviolet;
+    border-radius: 10px;
+    transition: all .5s ease;
+}
+.order-info button:hover, #accept:hover{
+    box-shadow: 1px 1px 1px 1px blueviolet;
+    background-color: rgba(0,256,0,0.4);
+}
+#delete:hover{
+    background-color: rgb(256,0,0,0.5);
+    color: white;
+}
+.deli-info{
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    border: 2px inset red;
+    padding: 0px;
+    max-height: 0;
+    overflow: auto;
+    transition: max-height 1s ease;
+}
+.deli-left h2{
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    font-style: italic;
+    color: blueviolet;
+}
+.deli-left{
+    border-right: 2px solid red;
+
+}
+.deli-right td{
+    width: 50%;
+    text-align: center;
+}
+/*Rating*/
+.ratingPane{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+
+}
+.rating-content{
+    position: relative;
+    top: 15%;
+    left: 30%;
+    background: white;
+    width: 40%;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 25% 74%;
+    gap: 10px;
+
+
+}
+.rating-content h2{
+    text-align: center;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    padding: 10px;
+    grid-column: 1/3;
+    color: white;
+    background-color: rgba(256,0,0,0.7);
+}
+.rating-content img{
+    width: 80%;
+    
+}
+.rating-content h3{
+    font-size: 1.1rem;
+}
+.rating-content h4{
+    font-size: 1rem;
+    color: red;
+}
+.rating-content textarea{
+    height: 10rem;
+    margin-bottom: 1rem;
+}
+.rating-content button{
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px 1px blueviolet;
+    transition: all .5s ease;
+    border: 2px inset blueviolet;
+
+}
+#sent:hover{
+    background-color: rgba(0,256,0,0.4);
+
+}
+#cancel:hover{
+    background-color: rgba(256,0,0,0.4);
+    
+}
+#cancel{
+    display: block;
+    width: 50%;
+    margin: 0 0 0 auto;
+}
+.checked{
+    color: gold;
+}
