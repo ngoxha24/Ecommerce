@@ -34,5 +34,10 @@ namespace Ecommerce.Controllers
         {
             return View();
         }
+        [Route("myshop/support")]
+        public ActionResult Support()
+        {
+            return View();
+        }
     }
 }
