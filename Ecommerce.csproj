@@ -755,6 +755,7 @@
     <Content Include="Style\ItemListPage.css" />
     <Content Include="Style\ItemPage.css" />
     <Content Include="Style\layoutStyle.css" />
+    <Content Include="Style\loginPage.css" />
     <Content Include="Style\myShopPage.css" />
     <Content Include="Style\owl.carousel.min.css" />
     <Content Include="Style\style.css" />
